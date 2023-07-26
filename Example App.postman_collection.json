@@ -1,0 +1,1761 @@
+{
+	"info": {
+		"_postman_id": "28a2de29-b5b1-47d9-aa21-8573dc3a39d2",
+		"name": "Example App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27556360",
+		"_collection_link": "https://givegiftd.postman.co/workspace/GiftD-LLC~82506be3-2932-4f5e-8c46-b64ba8b92a75/collection/27556360-28a2de29-b5b1-47d9-aa21-8573dc3a39d2?action=share&creator=27556360&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Fetch Books",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://mac.virtualbox:80/api/books",
+							"protocol": "http",
+							"host": [
+								"mac",
+								"virtualbox"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 | Fetch Books",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/books",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:05:47 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:05:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"title\": \"Ibukun Bello\",\n        \"author\": \"Ibukun Bello\",\n        \"isbn\": \"ibukunoreofe@gmail.com\",\n        \"published_at\": \"2023-07-25T00:00:00.000000Z\",\n        \"copies\": 4,\n        \"created_at\": \"2023-07-26T13:10:52.000000Z\",\n        \"updated_at\": \"2023-07-26T13:25:35.000000Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Store Books",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Sampling Author",
+									"description": "mandatory|max:255 chars",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "Ibukun Bello",
+									"description": "mandatory|max:255 chars",
+									"type": "text"
+								},
+								{
+									"key": "isbn",
+									"value": "155666332555",
+									"description": "mandatory|max:255 chars",
+									"type": "text"
+								},
+								{
+									"key": "published_at",
+									"value": "2023-07-25",
+									"description": "mandatory|date format:YYYY-MM-DD",
+									"type": "text"
+								},
+								{
+									"key": "copies",
+									"value": "5",
+									"description": "mandatory|integer|min:1|max:30000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://mac.virtualbox:80/api/books",
+							"protocol": "http",
+							"host": [
+								"mac",
+								"virtualbox"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "412 | Store Books",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Ibukun Bello",
+											"type": "text"
+										},
+										{
+											"key": "author",
+											"value": "Ibukun Bello",
+											"type": "text"
+										},
+										{
+											"key": "isbn",
+											"value": "ibukunoreofe@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "published_at",
+											"value": "2023-07-25",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "copies",
+											"value": "5",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/books",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:06:11 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:06:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"published_at\": [\n        \"The published at field is required.\"\n    ],\n    \"copies\": [\n        \"The copies field is required.\"\n    ]\n}"
+						},
+						{
+							"name": "200 | Store Books",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Sampling Author",
+											"description": "mandatory|max:255 chars",
+											"type": "text"
+										},
+										{
+											"key": "author",
+											"value": "Ibukun Bello",
+											"description": "mandatory|max:255 chars",
+											"type": "text"
+										},
+										{
+											"key": "isbn",
+											"value": "155666332555",
+											"description": "mandatory|max:255 chars",
+											"type": "text"
+										},
+										{
+											"key": "published_at",
+											"value": "2023-07-25",
+											"description": "mandatory|date format:YYYY-MM-DD",
+											"type": "text"
+										},
+										{
+											"key": "copies",
+											"value": "5",
+											"description": "mandatory|integer|min:1|max:30000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/books",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:09:35 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:09:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"title\": \"Sampling Author\",\n    \"author\": \"Ibukun Bello\",\n    \"isbn\": \"155666332555\",\n    \"published_at\": \"2023-07-25T00:00:00.000000Z\",\n    \"copies\": 5,\n    \"updated_at\": \"2023-07-26T14:09:35.000000Z\",\n    \"created_at\": \"2023-07-26T14:09:35.000000Z\",\n    \"id\": 4\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Sampling Author",
+									"description": "mandatory|max:255 chars",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "Ibukun Bello",
+									"description": "mandatory|max:255 chars",
+									"type": "text"
+								},
+								{
+									"key": "isbn",
+									"value": "155666332555",
+									"description": "mandatory|max:255 chars",
+									"type": "text"
+								},
+								{
+									"key": "published_at",
+									"value": "2023-07-25",
+									"description": "mandatory|date format:YYYY-MM-DD",
+									"type": "text"
+								},
+								{
+									"key": "copies",
+									"value": "5",
+									"description": "mandatory|integer|min:1|max:30000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://mac.virtualbox:80/api/books/4",
+							"protocol": "http",
+							"host": [
+								"mac",
+								"virtualbox"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"books",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "417 | Update Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "Sampling Author",
+											"description": "mandatory|max:255 chars",
+											"type": "text"
+										},
+										{
+											"key": "author",
+											"value": "Ibukun Bello",
+											"description": "mandatory|max:255 chars",
+											"type": "text"
+										},
+										{
+											"key": "isbn",
+											"value": "155666332555",
+											"description": "mandatory|max:255 chars",
+											"type": "text"
+										},
+										{
+											"key": "published_at",
+											"value": "2023-07-25",
+											"description": "mandatory|date format:YYYY-MM-DD",
+											"type": "text"
+										},
+										{
+											"key": "copies",
+											"value": "5",
+											"description": "mandatory|integer|min:1|max:30000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/books/1",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"books",
+										"1"
+									]
+								}
+							},
+							"status": "Expectation Failed",
+							"code": 417,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:10:22 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:10:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"No query results for model [App\\\\Models\\\\Book] 1\"\n}"
+						},
+						{
+							"name": "200 | Update Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "Sampling Author",
+											"description": "mandatory|max:255 chars",
+											"type": "text"
+										},
+										{
+											"key": "author",
+											"value": "Ibukun Bello",
+											"description": "mandatory|max:255 chars",
+											"type": "text"
+										},
+										{
+											"key": "isbn",
+											"value": "155666332555",
+											"description": "mandatory|max:255 chars",
+											"type": "text"
+										},
+										{
+											"key": "published_at",
+											"value": "2023-07-25",
+											"description": "mandatory|date format:YYYY-MM-DD",
+											"type": "text"
+										},
+										{
+											"key": "copies",
+											"value": "5",
+											"description": "mandatory|integer|min:1|max:30000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/books/4",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"books",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:11:48 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:11:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"title\": \"Sampling Author\",\n    \"author\": \"Ibukun Bello\",\n    \"isbn\": \"155666332555\",\n    \"published_at\": \"2023-07-25T00:00:00.000000Z\",\n    \"copies\": 5,\n    \"created_at\": \"2023-07-26T14:09:35.000000Z\",\n    \"updated_at\": \"2023-07-26T14:09:35.000000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://mac.virtualbox:80/api/books/4",
+							"protocol": "http",
+							"host": [
+								"mac",
+								"virtualbox"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"books",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "417 | Delete Book",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/books/1",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"books",
+										"1"
+									]
+								}
+							},
+							"status": "Expectation Failed",
+							"code": 417,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:12:12 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:12:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"No query results for model [App\\\\Models\\\\Book] 1\"\n}"
+						},
+						{
+							"name": "204 | Delete Book",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/books/4",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"books",
+										"4"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:12:27 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:12:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "55"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Checkouts",
+			"item": [
+				{
+					"name": "Checkouts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"description": "mandatory",
+									"type": "text"
+								},
+								{
+									"key": "book_id",
+									"value": "3",
+									"description": "mandatory",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://mac.virtualbox:80/api/checkouts",
+							"protocol": "http",
+							"host": [
+								"mac",
+								"virtualbox"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"checkouts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "412 | Checkouts",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "book_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/checkouts",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"checkouts"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:12:50 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:12:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"book_id\": [\n        \"The selected book id is invalid.\"\n    ]\n}"
+						},
+						{
+							"name": "200 | Checkouts",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "book_id",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/checkouts",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"checkouts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:16:39 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:16:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"book_id\": 3,\n    \"user_id\": 1,\n    \"checkout_date\": \"2023-07-26T14:16:39.000000Z\",\n    \"return_date\": null,\n    \"updated_at\": \"2023-07-26T14:16:39.000000Z\",\n    \"created_at\": \"2023-07-26T14:16:39.000000Z\",\n    \"id\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Return Book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://mac.virtualbox:80/api/checkouts/3",
+							"protocol": "http",
+							"host": [
+								"mac",
+								"virtualbox"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"checkouts",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "412 | Return Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/checkouts/1",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"checkouts",
+										"1"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:16:59 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:16:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book has already been marked returned!\"\n}"
+						},
+						{
+							"name": "200 | Return Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://mac.virtualbox:80/api/checkouts/3",
+									"protocol": "http",
+									"host": [
+										"mac",
+										"virtualbox"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"checkouts",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "mac.virtualbox:80"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:17:21 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Jul 2023 14:17:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Ibukun Bello",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ibukunoreofe@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://mac.virtualbox:80/api/register",
+					"protocol": "http",
+					"host": [
+						"mac",
+						"virtualbox"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Ibukun Bello",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ibukunoreofe@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://mac.virtualbox:80/api/register",
+							"protocol": "http",
+							"host": [
+								"mac",
+								"virtualbox"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Host",
+							"value": "mac.virtualbox:80"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Jul 2023 12:18:10 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Jul 2023 12:18:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.8"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:3000"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "ibukunoreofe@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://mac.virtualbox:80/api/login",
+					"protocol": "http",
+					"host": [
+						"mac",
+						"virtualbox"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ibukunoreofe@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://mac.virtualbox:80/api/login",
+							"protocol": "http",
+							"host": [
+								"mac",
+								"virtualbox"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "mac.virtualbox:80"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Jul 2023 12:27:24 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Jul 2023 12:27:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.8"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:3000"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Ibukun Bello\",\n        \"email\": \"ibukunoreofe@gmail.com\",\n        \"created_at\": \"2023-07-26T12:18:10.000000Z\",\n        \"updated_at\": \"2023-07-26T12:18:10.000000Z\"\n    },\n    \"token\": \"1|gDKoSVCxHD7bjuX9aEvlcdut5Y8Oouby13iWY39b\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://mac.virtualbox:80/api/logout",
+					"protocol": "http",
+					"host": [
+						"mac",
+						"virtualbox"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Logout",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://mac.virtualbox:80/api/logout",
+							"protocol": "http",
+							"host": [
+								"mac",
+								"virtualbox"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Host",
+							"value": "mac.virtualbox:80"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Jul 2023 12:30:34 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Jul 2023 12:30:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.8"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:3000"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "2|CHeL37CdciOiXtedAasdRSQJjNyja60JVeTcex8E",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
