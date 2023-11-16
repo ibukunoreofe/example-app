@@ -50,10 +50,13 @@ class Handler extends ExceptionHandler
 //            return new UrlNotFoundResponse($e);
 //        }
 
-        if ($e instanceof ValidationException) {
-            return new PreConditionFailedResponse($e->errors());
-        }
+        if($request->wantsJson())
+        {
+            if ($e instanceof ValidationException) {
+                return new PreConditionFailedResponse($e->errors());
+            }
 
-        return new ExpectionFailedResponse(['error' => $e->getMessage()]);
+            return new ExpectionFailedResponse(['error' => $e->getMessage()]);
+        }else return parent::render($request, $e);
     }
 }
