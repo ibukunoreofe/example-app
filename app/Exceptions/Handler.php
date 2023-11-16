@@ -46,9 +46,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $e)
     {
-        if ($e instanceof NotFoundHttpException || $e instanceof MethodNotAllowedHttpException) {
-            return new UrlNotFoundResponse($e);
-        }
+//        if ($e instanceof NotFoundHttpException || $e instanceof MethodNotAllowedHttpException) {
+//            return new UrlNotFoundResponse($e);
+//        }
 
         if ($e instanceof ValidationException) {
             return new PreConditionFailedResponse($e->errors());
