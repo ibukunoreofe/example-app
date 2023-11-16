@@ -37,3 +37,6 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth:sanctum')
     ->name('logout');
+
+Route::post('/auth/google/login', [\App\Http\Controllers\API\Auth\GoogleAuthController::class, 'loginViaGoogleToken'])
+    ->middleware('guest');

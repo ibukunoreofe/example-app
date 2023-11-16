@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Book
- *
+ * 
  * @property int $id
  * @property string $title
  * @property string $author
@@ -21,27 +21,30 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $copies
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * 
  * @property Collection|Checkout[] $checkouts
+ *
+ * @package App\ModelsBase
  */
 class Book extends Model
 {
-    protected $table = 'books';
+	protected $table = 'books';
 
-    protected $casts = [
-        'published_at' => 'datetime',
-        'copies' => 'int',
-    ];
+	protected $casts = [
+		'published_at' => 'datetime',
+		'copies' => 'int'
+	];
 
-    protected $fillable = [
-        'title',
-        'author',
-        'isbn',
-        'published_at',
-        'copies',
-    ];
+	protected $fillable = [
+		'title',
+		'author',
+		'isbn',
+		'published_at',
+		'copies'
+	];
 
-    public function checkouts()
-    {
-        return $this->hasMany(Checkout::class);
-    }
+	public function checkouts()
+	{
+		return $this->hasMany(Checkout::class);
+	}
 }

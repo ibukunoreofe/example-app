@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PersonalAccessToken
- *
+ * 
  * @property int $id
  * @property string $tokenable_type
  * @property int $tokenable_id
@@ -22,28 +22,30 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $expires_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ *
+ * @package App\ModelsBase
  */
 class PersonalAccessToken extends Model
 {
-    protected $table = 'personal_access_tokens';
+	protected $table = 'personal_access_tokens';
 
-    protected $casts = [
-        'tokenable_id' => 'int',
-        'last_used_at' => 'datetime',
-        'expires_at' => 'datetime',
-    ];
+	protected $casts = [
+		'tokenable_id' => 'int',
+		'last_used_at' => 'datetime',
+		'expires_at' => 'datetime'
+	];
 
-    protected $hidden = [
-        'token',
-    ];
+	protected $hidden = [
+		'token'
+	];
 
-    protected $fillable = [
-        'tokenable_type',
-        'tokenable_id',
-        'name',
-        'token',
-        'abilities',
-        'last_used_at',
-        'expires_at',
-    ];
+	protected $fillable = [
+		'tokenable_type',
+		'tokenable_id',
+		'name',
+		'token',
+		'abilities',
+		'last_used_at',
+		'expires_at'
+	];
 }

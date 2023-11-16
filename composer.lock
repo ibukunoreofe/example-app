@@ -7341,16 +7341,16 @@
         },
         {
             "name": "reliese/laravel",
-            "version": "v1.2.2",
+            "version": "v1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reliese/laravel.git",
-                "reference": "b283b30b73aba472c006749e6af7700aa541bab3"
+                "reference": "3e0d2e5054c6c4f815d72f22915b35e3ffe82858"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reliese/laravel/zipball/b283b30b73aba472c006749e6af7700aa541bab3",
-                "reference": "b283b30b73aba472c006749e6af7700aa541bab3",
+                "url": "https://api.github.com/repos/reliese/laravel/zipball/3e0d2e5054c6c4f815d72f22915b35e3ffe82858",
+                "reference": "3e0d2e5054c6c4f815d72f22915b35e3ffe82858",
                 "shasum": ""
             },
             "require": {
@@ -7400,7 +7400,7 @@
                 "issues": "https://github.com/reliese/laravel/issues",
                 "source": "https://github.com/reliese/laravel"
             },
-            "time": "2023-04-04T11:47:25+00:00"
+            "time": "2023-08-17T07:50:33+00:00"
         },
         {
             "name": "sebastian/cli-parser",

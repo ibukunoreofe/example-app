@@ -44,7 +44,7 @@
             </x-primary-button>
         </div>
 
-        <a href="#" type="button" class="login-with-google-btn" >
+        <a href="{{ url('auth/google')  }}" type="button" class="login-with-google-btn" >
             Sign in with Google
         </a>
     </form>

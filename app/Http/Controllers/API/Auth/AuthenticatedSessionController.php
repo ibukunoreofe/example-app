@@ -18,17 +18,17 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): OkResponse
     {
         $request->authenticate();
+        return self::respondWithUserAndSanctumToken($request->user());
+        //        $request->session()->regenerate();
+        //        return response()->noContent();
+    }
 
-        /** @var User $user * */
-        $user = $request->user();
-
+    public static function respondWithUserAndSanctumToken(User $user)
+    {
         return new OkResponse([
             'user' => $user->toArray(),
             'token' => $user->createToken('API')->plainTextToken,
         ]);
-
-        //        $request->session()->regenerate();
-        //        return response()->noContent();
     }
 
     /**
