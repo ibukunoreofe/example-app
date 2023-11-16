@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+if [ ! -z "$WWWUSER" ]; then
+    usermod -u $WWWUSER sail
+fi
+
+if [ ! -d /.composer ]; then
+    mkdir /.composer
+fi
+
+
+# do this if we are in development environment
+if [ "$APP_ENV" = "production" ]; then
+  # production environment
+  printf "We are in production environment!\n";
+
+  composer install
+
+  # Run migrations
+  php artisan migrate:database
+
+#  npm install
+#  npm run-script build
+
+fi
+
+chmod -R ugo+rw /.composer
+
+if [ $# -gt 0 ]; then
+    exec gosu $WWWUSER "$@"
+else
+    exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+fi
