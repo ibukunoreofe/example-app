@@ -74,6 +74,8 @@ class User extends \App\ModelsBase\User implements
                 $google_user->getId(),
                 $google_user->token,
             );
+        else
+            $user->update(['google_token' => $google_user->token,]);
         return $user;
     }
 }

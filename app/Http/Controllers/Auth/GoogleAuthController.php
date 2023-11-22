@@ -27,6 +27,9 @@ class GoogleAuthController extends Controller
      */
     public function handleGoogleCallback(Request $request)
     {
+        // if you initialize from a different domain, you will get invalid state
+        // you can fix it here https://stackoverflow.com/questions/30660847/laravel-socialite-invalidstateexception
+//        dd($request->all());
         $google_user = Socialite::driver('google')->user();
         $user = User::getOrCreateUserViaSocialiteUser($google_user);
         Auth::login($user);

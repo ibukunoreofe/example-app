@@ -7,6 +7,7 @@ use App\Http\Responses\PreConditionFailedResponse;
 use App\Http\Responses\ServerErrorResponse;
 use App\Http\Responses\UrlNotFoundResponse;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
@@ -55,6 +56,8 @@ class Handler extends ExceptionHandler
             if ($e instanceof ValidationException) {
                 return new PreConditionFailedResponse($e->errors());
             }
+
+            if($e instanceof ThrottleRequestsException) return parent::render($request, $e);
 
             return new ExpectionFailedResponse(['error' => $e->getMessage()]);
         }else return parent::render($request, $e);

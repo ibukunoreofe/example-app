@@ -40,3 +40,6 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 
 Route::post('/auth/google/login', [\App\Http\Controllers\API\Auth\GoogleAuthController::class, 'loginViaGoogleToken'])
     ->middleware('guest');
+
+Route::post('/auth/social/fetch', [\App\Http\Controllers\API\Auth\DecodeSocialAuthController::class, 'getUser'])
+    ->middleware('guest');
