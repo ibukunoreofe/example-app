@@ -1,0 +1,61 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Example OpenApi",
+        "description": "Example App OpenApi description",
+        "contact": {
+            "email": "ibukunoreofe@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
+        }
+    },
+    "paths": {
+        "/pet/findByTags": {
+            "get": {
+                "tags": [
+                    "pet"
+                ],
+                "summary": "Get all books",
+                "description": "Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+                "operationId": "findByTags",
+                "parameters": [
+                    {
+                        "name": "tags",
+                        "in": "query",
+                        "description": "Tags to filter by",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": [
+                            "write:pets",
+                            "read:pets"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

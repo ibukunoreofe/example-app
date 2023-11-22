@@ -13,7 +13,39 @@ use Illuminate\Http\Response;
 
 class BooksController extends Controller
 {
+
     /**
+     * @OA\Get(
+     *     path="/pet/findByTags",
+     *     tags={"pet"},
+     *     summary="Get all books",
+     *     description="Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+     *     operationId="findByTags",
+     *     @OA\Parameter(
+     *         name="tags",
+     *         in="query",
+     *         description="Tags to filter by",
+     *         required=true,
+     *         explode=true,
+     *         @OA\Schema(
+     *             type="array",
+     *             @OA\Items(
+     *                 type="string",
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid status value"
+     *     ),
+     *     security={
+     *         {"petstore_auth": {"write:pets", "read:pets"}}
+     *     }
+     * )
      * @return \Illuminate\Database\Eloquent\Builder[]|Collection
      */
     public function getBooks(): Collection|array
