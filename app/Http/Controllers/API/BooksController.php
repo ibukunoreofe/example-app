@@ -28,7 +28,7 @@ class BooksController extends Controller
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(
-     *                 ref="App\Http\Controllers\API\SwaggerDefinitions\BooksResponseComponent"
+     *                 ref="App\Models\Book"
      *             )
      *         )
      *     )
@@ -41,6 +41,39 @@ class BooksController extends Controller
         return Book::query()->get();
     }
 
+    /**
+     * @OA\Post(
+     *     path="/books",
+     *     operationId="storeBook",
+     *     tags={"Books"},
+     *     summary="Store a book",
+     *     security={{"bearerAuth":{}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(
+     *                 @OA\Property(property="title", type="string", description="The title of the book", example="Frenzy book for beginners", nullable=false),
+     *                 @OA\Property(property="author", type="string", description="The name of the author", enum={"Billy Gram", "Rother Ford", "Frenzy Mammmy"}, nullable=false, default="Frenzy Mammmy"),
+     *                 @OA\Property(property="isbn", type="string", description="The ISBN number", nullable=false, default="978-2-12-345680-3"),
+     *                 @OA\Property(property="published_at", type="string", format="YYYY-MM-DD", description="Date of publication before today's date", nullable=false, default="2023-12-01"),
+     *                 @OA\Property(property="copies", type="integer", description="Numbers of copies", default="50", nullable=false),
+     *             ),
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Book has been created",
+     *         @OA\JsonContent(
+     *                 ref="App\Models\Book"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validation error",
+     *     ),
+     * )
+     */
     public function storeBook(Request $request): OkResponse
     {
         $validated = $request->validate([
