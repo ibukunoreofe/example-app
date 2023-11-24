@@ -31,8 +31,8 @@ use Illuminate\Routing\Controller as BaseController;
  *      scheme="bearer"
  * ),
  * @OA\ExternalDocumentation(
- *       description="Find out more about this api additional link on top",
- *       url="http://swagger.io"
+ *       description="Find out more about different properties type including enums",
+ *       url="https://github.com/zircote/swagger-php/blob/master/Examples/petstore-3.0/Petstore.php"
  *   ),
  * @OA\Tag(
  *      name="Books",
@@ -54,6 +54,8 @@ use Illuminate\Routing\Controller as BaseController;
  *       description="Local insecure API",
  *       url="http://svr2.scadware.com:14080/api"
  *   )
+ *
+ *
  *
  *   SWAGGER DOES NOT AUTO COPY TOKEN. YOU HAVE TO MANUALLY COPY IT TO THE AUTH
  *
