@@ -3,6 +3,7 @@
     "info": {
         "title": "Example OpenApi",
         "description": "Example App OpenApi description",
+        "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "email": "ibukunoreofe@gmail.com"
         },
@@ -15,47 +16,281 @@
             "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
         }
     },
+    "servers": [
+        {
+            "url": "./../api",
+            "description": "Local Secure API"
+        },
+        {
+            "url": "http://svr2.scadware.com:14080/api",
+            "description": "Local insecure API"
+        }
+    ],
     "paths": {
-        "/pet/findByTags": {
-            "get": {
+        "/login": {
+            "post": {
                 "tags": [
-                    "pet"
+                    "Authentication"
                 ],
-                "summary": "Get all books",
-                "description": "Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
-                "operationId": "findByTags",
-                "parameters": [
-                    {
-                        "name": "tags",
-                        "in": "query",
-                        "description": "Tags to filter by",
-                        "required": true,
-                        "explode": true,
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
+                "summary": "Log in",
+                "description": "Login by email and password",
+                "operationId": "loginAuthorization",
+                "requestBody": {
+                    "description": "Enter login details",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
+                                        "example": "ibukunoreofe@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "pp"
+                                    }
+                                },
+                                "type": "object"
                             }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
-                        "description": "successful operation"
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string",
+                                            "example": "longstring"
+                                        },
+                                        "result": {
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     },
-                    "400": {
-                        "description": "Invalid status value"
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The email or password entered are not recognised"
+                                        },
+                                        "result": {
+                                            "type": "string",
+                                            "example": "error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/books": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Get all books",
+                "description": "Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing. operationId can be reference will see annotation from another comment",
+                "operationId": "listAllBooks",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Book"
+                                    }
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
                     {
-                        "petstore_auth": [
-                            "write:pets",
-                            "read:pets"
-                        ]
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Store a book",
+                "operationId": "storeBook",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "description": "The title of the book",
+                                        "type": "string",
+                                        "example": "Frenzy book for beginners",
+                                        "nullable": false
+                                    },
+                                    "author": {
+                                        "description": "The name of the author",
+                                        "type": "string",
+                                        "default": "Frenzy Mammmy",
+                                        "enum": [
+                                            "Billy Gram",
+                                            "Rother Ford",
+                                            "Frenzy Mammmy"
+                                        ],
+                                        "nullable": false
+                                    },
+                                    "isbn": {
+                                        "description": "The ISBN number",
+                                        "type": "string",
+                                        "default": "978-2-12-345680-3",
+                                        "nullable": false
+                                    },
+                                    "published_at": {
+                                        "description": "Date of publication before today's date",
+                                        "type": "string",
+                                        "format": "YYYY-MM-DD",
+                                        "default": "2023-12-01",
+                                        "nullable": false
+                                    },
+                                    "copies": {
+                                        "description": "Numbers of copies",
+                                        "type": "integer",
+                                        "default": "50",
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Book has been created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
                     }
                 ]
             }
         }
+    },
+    "components": {
+        "schemas": {
+            "BooksResponseComponent": {
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    }
+                },
+                "type": "object"
+            },
+            "Book": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "author": {
+                        "type": "string"
+                    },
+                    "isbn": {
+                        "type": "string"
+                    },
+                    "published_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "created_at": {
+                        "description": "A date and time in the ISO 8601 format.",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    },
+                    "copies": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Books",
+            "description": "Everything about your books",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://swagger.io"
+            }
+        },
+        {
+            "name": "Authentication",
+            "description": "Authenticate your app using Sanctum token"
+        }
+    ],
+    "externalDocs": {
+        "description": "Find out more about different properties type including enums",
+        "url": "https://github.com/zircote/swagger-php/blob/master/Examples/petstore-3.0/Petstore.php"
     }
 }
