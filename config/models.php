@@ -282,6 +282,7 @@ return [
         'except' => [
             'migrations', 'telescope_entries_tags', 'telescope_monitoring', 'telescope_entries',
             'nova_settings', 'failed_jobs', 'action_events',
+            'roles', 'permissions', 'model_has_permissions', 'model_has_roles', 'role_has_permissions'  // spatie permissions
         ],
 
         /*

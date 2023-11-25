@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -10,6 +11,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends \App\ModelsBase\User implements
@@ -17,9 +19,28 @@ class User extends \App\ModelsBase\User implements
     AuthorizableContract,
     CanResetPasswordContract
 {
-    use \Illuminate\Auth\Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail;
+    use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail;
     use HasApiTokens, HasFactory, Notifiable;
 
+    /**
+     * Instead of doing this, you can use methods below or just
+     * set this if that is the only target guard in your app
+     * @var string
+     */
+     protected $guard_name = 'sanctum';
+    // I tried to make the User class dynamic with current guard by auto getting the current guard name
+
+//    public function assignRole(...$roles)
+//    {
+//        $this->guard_name = Auth::getDefaultDriver();
+//        return parent::assignRole($roles);
+//    }
+//
+//    public function hasPermissionTo($permission, $guardName = null): bool
+//    {
+//        $this->guard_name = Auth::getDefaultDriver();
+//        return parent::hasPermissionTo($permission);
+//    }
 
     /**
      * @return null|User

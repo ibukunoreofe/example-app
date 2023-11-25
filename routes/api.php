@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\API\Auth\RegisteredUserController;
 use App\Http\Controllers\API\BooksController;
+use App\Http\Controllers\API\PermissionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/books', [BooksController::class, 'storeBook']);
     Route::put('/books/{book}', [BooksController::class, 'updateBook']);
     Route::delete('/books/{book}', [BooksController::class, 'deleteBook']);
+
+    Route::resource('permissions', PermissionsController::class)->except(["create","edit"]);
 
     Route::post('/checkouts', [BooksController::class, 'checkouts']);
     Route::put('/checkouts/{checkout}', [BooksController::class, 'returnCheckout']);
