@@ -211,6 +211,246 @@
                     }
                 ]
             }
+        },
+        "/permissions": {
+            "get": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Get all permissions and roles assigned to me",
+                "description": "It will return all permissions and roles assigned to the logged in users",
+                "operationId": "listAllPermissions",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Create a role and permission",
+                "operationId": "createRoleAndPermission",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "role": {
+                                        "description": "The name of the role like users, admins, editors",
+                                        "type": "string",
+                                        "default": "users",
+                                        "example": "users",
+                                        "nullable": false
+                                    },
+                                    "permissions": {
+                                        "description": "permissions to assign to the above role",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "example": [
+                                            "create book",
+                                            "edit book",
+                                            "delete book"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Permissions have been created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/permissions/{role}": {
+            "get": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Show permissions on role",
+                "operationId": "showPermission",
+                "parameters": [
+                    {
+                        "name": "role",
+                        "in": "path",
+                        "description": "name of the role you want to display",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "users"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Permissions related to role",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Update permissions on role",
+                "operationId": "updatePermission",
+                "parameters": [
+                    {
+                        "name": "role",
+                        "in": "path",
+                        "description": "name of the role you are about to update",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "users"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "permissions": {
+                                        "description": "permissions to assign to the above role",
+                                        "type": "object",
+                                        "example": [
+                                            "create book",
+                                            "edit book",
+                                            "delete book"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Permissions have been created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/permissions/{permission}": {
+            "delete": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "Delete permission from user role",
+                "operationId": "deletePermission",
+                "parameters": [
+                    {
+                        "name": "permission",
+                        "in": "path",
+                        "description": "name of the permission you are about to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "create book"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "role": {
+                                        "description": "The name of the role like users, admins, editors",
+                                        "type": "string",
+                                        "default": "users",
+                                        "example": "users",
+                                        "nullable": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Permissions have been deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {
