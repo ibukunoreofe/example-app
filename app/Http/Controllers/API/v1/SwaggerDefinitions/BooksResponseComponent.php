@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\SwaggerDefinitions;
+namespace App\Http\Controllers\API\v1\SwaggerDefinitions;
 
 /**
  * @OA\Schema(

@@ -4,8 +4,86 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8871051df13d7b6a8e69e6c12d48e854",
+    "content-hash": "feda66c7180ace5af2ad616f71881903",
     "packages": [
+        {
+            "name": "bepsvpt/secure-headers",
+            "version": "7.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bepsvpt/secure-headers.git",
+                "reference": "946c4050bae960ccc50579dd2d24a2ca3cb7cdf9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bepsvpt/secure-headers/zipball/946c4050bae960ccc50579dd2d24a2ca3cb7cdf9",
+                "reference": "946c4050bae960ccc50579dd2d24a2ca3cb7cdf9",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2.42",
+                "ext-json": "*",
+                "ext-xdebug": "*",
+                "laravel/pint": "^1.14",
+                "orchestra/testbench": "^3.1 || ^4.18 || ^5.20 || ^6.43 || ^7.41 || ^8.22 || ^9.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.5 || ^9.6 || ^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bepsvpt\\SecureHeaders\\SecureHeadersServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Bepsvpt\\SecureHeaders\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "bepsvpt",
+                    "email": "og7lsrszah6y3lz@infinitefa.email"
+                }
+            ],
+            "description": "Add security related headers to HTTP response. The package includes Service Providers for easy Laravel integration.",
+            "homepage": "https://github.com/bepsvpt/secure-headers",
+            "keywords": [
+                "clear-site-data",
+                "content-security-policy",
+                "csp",
+                "except-ct",
+                "feature-policy",
+                "header",
+                "hsts",
+                "https",
+                "laravel",
+                "referrer-policy"
+            ],
+            "support": {
+                "issues": "https://github.com/bepsvpt/secure-headers/issues",
+                "source": "https://github.com/bepsvpt/secure-headers/tree/7.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/secure-headers",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-03-14T01:20:05+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -6314,6 +6392,135 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.6"
             },
             "time": "2023-01-03T09:29:04+00:00"
+        },
+        {
+            "name": "treblle/treblle-laravel",
+            "version": "4.5.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Treblle/treblle-laravel.git",
+                "reference": "b7ba2c47b878d87b2d1b958f17a1e13c7c39b160"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Treblle/treblle-laravel/zipball/b7ba2c47b878d87b2d1b958f17a1e13c7c39b160",
+                "reference": "b7ba2c47b878d87b2d1b958f17a1e13c7c39b160",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^8.1",
+                "treblle/utils": "^0.3.1"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^7.7.0",
+                "laravel/octane": "^1.5.6",
+                "laravel/pint": "^1.10.3",
+                "orchestra/testbench": "^7.0 || ^8.5.9",
+                "phpstan/phpstan": "^1.10.25"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Treblle\\TreblleServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Treblle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vedran Cindrić",
+                    "email": "vedran@treblle.com",
+                    "homepage": "https://treblle.com/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Steve McDougall",
+                    "email": "juststevemcd@gmail.com",
+                    "homepage": "https://treblle.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Stay in tune with your APIs",
+            "homepage": "https://treblle.com/",
+            "keywords": [
+                "api",
+                "debuging",
+                "documentation",
+                "laravel",
+                "monitoring",
+                "treblle"
+            ],
+            "support": {
+                "issues": "https://github.com/Treblle/treblle-laravel/issues",
+                "source": "https://github.com/Treblle/treblle-laravel/tree/4.5.6"
+            },
+            "time": "2024-04-25T09:18:38+00:00"
+        },
+        {
+            "name": "treblle/utils",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Treblle/php-utils.git",
+                "reference": "8115ccd50174d68b2b397bf3d5c50a4ae0f944d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Treblle/php-utils/zipball/8115ccd50174d68b2b397bf3d5c50a4ae0f944d4",
+                "reference": "8115ccd50174d68b2b397bf3d5c50a4ae0f944d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.7",
+                "pestphp/pest": "^v2.8.2",
+                "phpstan/phpstan": "^1.10.25"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Treblle\\Utils\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve McDougall",
+                    "email": "juststevemcd@gmail.com",
+                    "homepage": "https://www.juststeveking.uk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Treblle PHP SDK utilities.",
+            "homepage": "https://www.treblle.com/",
+            "keywords": [
+                "api",
+                "debuging",
+                "documentation",
+                "laravel",
+                "monitoring",
+                "treblle"
+            ],
+            "support": {
+                "issues": "https://github.com/Treblle/php-utils/issues",
+                "source": "https://github.com/Treblle/php-utils/tree/0.3.1"
+            },
+            "time": "2024-04-19T12:12:15+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

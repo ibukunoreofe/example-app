@@ -26,14 +26,36 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        $this->routes(function () {
-            Route::middleware('api')
-                ->prefix('api')
-                ->group(base_path('routes/api.php'));
+        $this->routes(fn() => $this->map());
+    }
 
-            Route::middleware('web')
-                ->group(base_path('routes/web.php'));
-        });
+    public function map()
+    {
+        $this->mapApiRoutes();
+        $this->mapWebRoutes();
+    }
+
+    protected function mapApiRoutes()
+    {
+        // Default the version to null initially
+        $version = 'v1';
+        $prefix = 'api';
+
+        // Check if running in console to prevent errors during commands and tests
+        if (!app()->runningInConsole()) {
+            list($version, $prefix) = $this->getApiVersionAndBasePrefix($version, $prefix);
+        }
+
+        // Include the appropriate route file based on determined version
+        Route::prefix($prefix)
+            ->middleware('api')
+            ->group(base_path("routes/api_$version.php"));
+    }
+
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+            ->group(base_path('routes/web.php'));
     }
 
     protected function configureRateLimiting()
@@ -62,5 +84,30 @@ class RouteServiceProvider extends ServiceProvider
                 ? Limit::perMinute(10)->by($request->user()->id)
                 : Limit::perMinute(2)->by($request->ip());
         });
+    }
+
+    /**
+     * @param string|null $defaultVersion
+     * @return array|string|null
+     */
+    private function getApiVersionAndBasePrefix(string $defaultVersion = 'v1', string $defaultPrefix = 'api'): array
+    {
+        $request = request();
+        $version = $defaultVersion;
+
+        // Attempt to extract the version from the URI or header
+        $uriSegments = explode('/', $request->path()); // Get URI segments to check for version in path
+
+        if (isset($uriSegments[1]) && in_array($uriSegments[1], ['v1', 'v2'])) {
+            $version = $uriSegments[1]; // Use version from URI if available
+            return [ $version , $defaultPrefix . '/' . $version ];
+        } else {
+            $headerVersion = $request->header('Accept-Version');
+            if ($headerVersion && in_array($headerVersion, ['v1', 'v2'])) {
+                $version = $headerVersion; // Override with header version if specified
+            }
+        }
+
+        return [ $version , $defaultPrefix  ];
     }
 }

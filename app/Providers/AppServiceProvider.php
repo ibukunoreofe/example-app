@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         URL::forceRootUrl(env('APP_URL'));
-        URL::forceScheme(parse_url( env('APP_URL'), PHP_URL_SCHEME ));
+        //TODO: Check if it still works without this line since X-PROTO is enabled
+//        URL::forceScheme(parse_url( env('APP_URL'), PHP_URL_SCHEME ));
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\API\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\API\Auth\RegisteredUserController;
-use App\Http\Controllers\API\BooksController;
-use App\Http\Controllers\API\PermissionsController;
+use App\Http\Controllers\API\v1\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\API\v1\Auth\RegisteredUserController;
+use App\Http\Controllers\API\v1\BooksController;
+use App\Http\Controllers\API\v1\PermissionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,8 +41,12 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth:sanctum')
     ->name('logout');
 
-Route::post('/auth/google/login', [\App\Http\Controllers\API\Auth\GoogleAuthController::class, 'loginViaGoogleToken'])
+Route::post('/auth/google/login', [\App\Http\Controllers\API\v1\Auth\GoogleAuthController::class, 'loginViaGoogleToken'])
     ->middleware('guest');
 
-Route::post('/auth/social/fetch', [\App\Http\Controllers\API\Auth\DecodeSocialAuthController::class, 'getUser'])
+Route::post('/auth/social/fetch', [\App\Http\Controllers\API\v1\Auth\DecodeSocialAuthController::class, 'getUser'])
     ->middleware('guest');
+
+Route::get('/test', function () {
+    return request()->secure() ? 'Secure' : 'Not Secure';
+});
