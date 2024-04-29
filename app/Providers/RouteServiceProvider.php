@@ -76,7 +76,9 @@ class RouteServiceProvider extends ServiceProvider
 //        });
 
         RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+            // return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+            // tag by bearer token instead of user-id so I can treat each login as different limit
+            return Limit::perMinute(100)->by(auth()->check() ?  $request->bearerToken() : $request->ip());
         });
 
         RateLimiter::for('few', function (Request $request) {

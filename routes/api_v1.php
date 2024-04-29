@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/books', [BooksController::class, 'getBooks'])->middleware("throttle:few");
+    Route::get('/books', [BooksController::class, 'getBooks']);
     Route::post('/books', [BooksController::class, 'storeBook']);
     Route::put('/books/{book}', [BooksController::class, 'updateBook']);
     Route::delete('/books/{book}', [BooksController::class, 'deleteBook']);
 
     Route::resource('permissions', PermissionsController::class)->except(["create","edit"]);
 
-    Route::post('/checkouts', [BooksController::class, 'checkouts']);
+    Route::post('/checkouts', [BooksController::class, 'checkouts'])->middleware("throttle:few");
     Route::put('/checkouts/{checkout}', [BooksController::class, 'returnCheckout']);
 });
 

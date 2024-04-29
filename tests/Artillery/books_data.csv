@@ -1,0 +1,50 @@
+title,author,isbn,published_at,copies
+"The Art of Testing","Jane Doe","9780307941","2022-01-01",10
+"Load Performance","John Smith","9780307942","2022-01-02",15
+"Stress Analysis","Alice Johnson","9780307943","2022-01-03",5
+"API Design Fundamentals","Steve Brown","9780307944","2022-01-04",20
+"Virtual User Handbook","Michael Davis","9780307945","2022-01-05",8
+"The Tester's Guide","Emily Clark","9780307946","2022-01-06",12
+"Breaking Points","Chris O'Neil","9780307947","2022-01-07",3
+"Automated Systems","David Lee","9780307948","2022-01-08",25
+"Endurance in Applications","Linda Green","9780307949","2022-01-09",9
+"Scalability Solutions","Samuel Adams","9780307950","2022-01-10",30
+"Quality Assurance Techniques","Lisa Watson","9780307951","2022-01-11",14
+"Integration Testing Simplified","Robert White","9780307952","2022-01-12",7
+"Performance Under Load","Maria Gonzalez","9780307953","2022-01-13",22
+"Concurrency Controls","James Wilson","9780307954","2022-01-14",16
+"Optimizing API Interactions","Patricia Young","9780307955","2022-01-15",11
+"Modern Testing Strategies","Nancy Moore","9780307956","2022-01-16",5
+"Cloud Testing Essentials","Daniel King","9780307957","2022-01-17",18
+"Real World Testing Scenarios","Carol Harris","9780307958","2022-01-18",20
+"Enterprise Testing Approaches","Jeff Martinez","9780307959","2022-01-19",10
+"Understanding Test Coverage","Joshua Taylor","9780307960","2022-01-20",17
+"The Myth of Complete Testing","Donna Thomas","9780307961","2022-01-21",6
+"Lifecycle of Software Testing","Paul Anderson","9780307962","2022-01-22",19
+"Basics of Load Testing","Laura Jackson","9780307963","2022-01-23",13
+"Continuous Delivery and Testing","Kevin Allen","9780307964","2022-01-24",21
+"Secure Testing Practices","Sarah Martin","9780307965","2022-01-25",9
+"Efficient Test Automation","Aaron Scott","9780307966","2022-01-26",15
+"Beyond Performance Testing","Stephanie Walker","9780307967","2022-01-27",7
+"Creating Test Plans","Gregory Young","9780307968","2022-01-28",12
+"Testing in Production","Amanda Hernandez","9780307969","2022-01-29",18
+"Legacy Systems Testing","Justin Nelson","9780307970","2022-01-30",4
+"Multi-User Testing Environment","Ryan King","9780307971","2022-01-31",16
+"The Art of Bug Hunting","Brandon Hill","9780307972","2022-02-01",22
+"Testing Stateful Applications","Katherine Lee","9780307973","2022-02-02",9
+"Scripting for Load Tests","Christian Scott","9780307974","2022-02-03",24
+"Analytics in Testing","Benjamin Robinson","9780307975","2022-02-04",11
+"Handling Test Data","Kimberly Lewis","9780307976","2022-02-05",13
+"Automated vs. Manual Testing","Evelyn Walker","9780307977","2022-02-06",5
+"Performance Bottlenecks","George Hall","9780307978","2022-02-07",20
+"Strategic Test Deployment","Amy Young","9780307979","2022-02-08",17
+"Feedback Loops in Testing","Edward Allen","9780307980","2022-02-09",8
+"Advanced Testing Frameworks","Rachel Moore","9780307981","2022-02-10",23
+"Scaling Test Operations","Diane Hernandez","9780307982","2022-02-11",12
+"Risk-Based Testing","Clifford Gonzalez","9780307983","2022-02-12",15
+"User Experience Testing","Floyd Murphy","9780307984","2022-02-13",10
+"Integration and API Tests","Grace Martin","9780307985","2022-02-14",20
+"Load and Stress Testing","Howard King","9780307986","2022-02-15",7
+"Predictive Test Modeling","Mildred Davis","9780307987","2022-02-16",11
+"Key Metrics for Testing","Cynthia Rodriguez","9780307988","2022-02-17",18
+"Collaborative Approaches to Testing","Walter Scott","9780307989","2022-02-18",6

@@ -1,0 +1,104 @@
+# npm install -g artillery
+config:
+  target: 'https://svr2.scadware.com:14443'
+  phases:
+    - duration: 30  # Total duration of the test in seconds
+      arrivalRate: 2
+      rampTo: 4
+      name: "Ramping up to 2"
+
+    - pause: 5
+
+    - duration: 60  # Total duration of the test in seconds
+      arrivalRate: 4
+      maxVusers: 70   #Don't go beyond 50 concurrent virtual users at any given time:
+      name: "Sustain"
+
+  # ensuring the aggregate maximum latency for the test is under 500 milliseconds:
+  ensure:
+    maxErrorRate: 1
+    max: 500
+
+  payload:
+    path: "books_data.csv"
+    fields:
+      - "title"
+      - "author"
+      - "isbn"
+      - "published_at"
+      - "copies"
+    order: random
+    skipHeader: true  # set this to true if it contains headers
+
+  processor: "./processors.cjs"  # Path to the custom processor script for handling responses
+
+scenarios:
+  - name: "Complete book management session"
+    flow:
+      # Login action to authenticate and retrieve a token
+      - post:
+          url: "/api/v1/login"
+          headers:
+            Accept: "application/json"
+          form:
+            email: "{{ $env.EMAIL }}"  # Using environment variables for email
+            password: "{{ $env.PASSWORD }}"  # Using environment variables for password
+          capture:
+            json: "$.token"  # Capture authentication token from the response
+            as: "loginToken"
+          expect:
+            statusCode: 200
+      #          afterResponse: "logResponse"  # Processor function logs the number of books
+      - log: "Logged in successfully and retrieved token. [ {{ loginToken }} ]"
+
+      # Create a book entry
+      - post:
+          url: "/api/v1/books"
+          headers:
+            Accept: "application/json"
+            Authorization: "Bearer {{ loginToken }}"
+          form:
+            title: "{{ title }}"
+            author: "{{ author }}"
+            isbn: "{{ isbn }}"
+            published_at: "{{ published_at }}"
+            copies: "1"
+          capture:
+            json: "$.id"  # Capture the ID of the created book
+            as: "bookId"
+          expect:
+            statusCode: 200
+          afterResponse: "logResponse"  # Processor function logs the number of books
+      - log: "Posted new book with ID: {{ bookId }}."
+
+      # Delete the created book
+      - delete:
+          url: "/api/v1/books/{{ bookId }}"
+          headers:
+            Accept: "application/json"
+            Authorization: "Bearer {{ loginToken }}"
+          expect:
+            statusCode: 204
+      - log: "Deleted book with ID: {{ bookId }}."
+
+      # Fetch the list of books and log the count
+      - get:
+          url: "/api/v1/books"
+          headers:
+            Accept: "application/json"
+            Authorization: "Bearer {{ loginToken }}"
+          expect:
+            statusCode: 200
+          afterResponse: "logBookCount"  # Processor function logs the number of books
+
+      # Logout action to end the session
+      - post:
+          url: "/api/v1/logout"
+          headers:
+            Authorization: "Bearer {{ loginToken }}"
+            Accept: "application/json"
+          expect:
+            statusCode: 204
+      #          afterResponse: "logResponse"  # Processor function logs the number of books
+
+      - log: "User logged out successfully with token {{ loginToken }}"

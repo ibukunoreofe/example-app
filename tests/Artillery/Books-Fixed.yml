@@ -1,0 +1,73 @@
+# npm install -g artillery
+# artillery run Books.yml
+config:
+  target: 'https://svr2.scadware.com:14443'  # Base URL for the API
+  phases:
+    - duration: 60  # Total duration of the test in seconds
+      arrivalRate: 3  # Number of new virtual users arriving every interval
+      arrivalCount: 3  # Ensures exactly 3 users start every time period
+      timeUnit: 5s  # Time unit in seconds, specifying interval for new users
+
+  payload:
+    path: "books_data.csv"
+    fields:
+      - "title"
+      - "author"
+      - "isbn"
+      - "published_at"
+      - "copies"
+
+scenarios:
+  - name: "Complete book management session"
+    before:
+      # Login action to authenticate and retrieve a token
+      - post:
+          url: "/api/v1/login"
+          headers:
+            Accept: "application/json"
+          form:
+            email: "{{ $env.EMAIL }}"  # User email fetched from environment variable
+            password: "{{ $env.PASSWORD }}"  # User password fetched from environment variable
+          capture:
+            json: "$.token"  # Capture authentication token from response
+            as: "loginToken"
+          expect:
+            statusCode: 200  # Expecting HTTP 200 OK on successful login
+
+    flow:
+      # Create and delete books in a loop
+      - loop:
+          - post:  # POST request to create a new book
+              url: "/api/v1/books"
+              headers:
+                Accept: "application/json"
+                Authorization: "Bearer {{ loginToken }}"  # Use the captured token for authorization
+              form:
+                title: "{{ title }}"
+                author: "{{ author }}"
+                isbn: "{{ isbn }}"
+                published_at: "{{ published_at }}"
+                copies: "{{ copies }}"
+              capture:
+                json: "$.id"  # Capture the ID of the created book
+                as: "bookId"
+              expect:
+                statusCode: 200  # Expecting HTTP 200 OK on successful book creation
+          - delete:  # DELETE request to remove the created book
+              url: "/api/v1/books/{{ bookId }}"
+              headers:
+                Accept: "application/json"
+                Authorization: "Bearer {{ loginToken }}"
+              expect:
+                statusCode: 204  # Expecting HTTP 204 No Content on successful deletion
+        count: 3  # Perform the loop 3 times for each user
+
+    after:
+      # Logout action to end the session
+      - post:
+          url: "/api/v1/logout"
+          headers:
+            Authorization: "Bearer {{ loginToken }}"
+            Accept: "application/json"
+          expect:
+            statusCode: 204  # Expecting HTTP 204 No Content on successful logout

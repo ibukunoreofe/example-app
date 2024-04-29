@@ -24,8 +24,6 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        EnforceHstsMiddleware::class,
-        SecurityHeadersMiddleware::class,
     ];
 
     /**
@@ -49,8 +47,10 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             EnsureApiVersionIsSpecified::class,
             Middleware\Versioning\AddVersionToResponse::class,
-            \Treblle\Middlewares\TreblleMiddleware::class,
+//            \Treblle\Middlewares\TreblleMiddleware::class,
             \Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class,
+            EnforceHstsMiddleware::class,
+            SecurityHeadersMiddleware::class,
         ],
     ];
 

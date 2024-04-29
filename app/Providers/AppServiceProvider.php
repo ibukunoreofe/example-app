@@ -23,5 +23,10 @@ class AppServiceProvider extends ServiceProvider
         URL::forceRootUrl(env('APP_URL'));
         //TODO: Check if it still works without this line since X-PROTO is enabled
 //        URL::forceScheme(parse_url( env('APP_URL'), PHP_URL_SCHEME ));
+
+        if ($this->app->environment('local')) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+        }
     }
 }
